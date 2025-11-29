@@ -1,0 +1,49 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; }
+/* Page background: soft gradient with decorative blurred blobs */
+body {
+	background: linear-gradient(135deg, #eef6ff 0%, #f7f8ff 100%);
+	color: #111;
+	min-height: 100vh;
+	position: relative;
+	background-attachment: fixed;
+}
+
+body::before {
+	content: "";
+	position: fixed;
+	left: 50%;
+	top: 10%;
+	width: 60vmax;
+	height: 60vmax;
+	transform: translateX(-40%) rotate(10deg);
+	background: radial-gradient(circle at 30% 30%, rgba(99,102,241,0.16), transparent 35%),
+							radial-gradient(circle at 70% 70%, rgba(56,189,248,0.10), transparent 30%);
+	filter: blur(60px) saturate(110%);
+	z-index: -1;
+	pointer-events: none;
+	animation: float 12s ease-in-out infinite;
+}
+
+@keyframes float {
+	0% { transform: translateX(-40%) translateY(0) rotate(10deg); }
+	50% { transform: translateX(-38%) translateY(6vh) rotate(12deg); }
+	100% { transform: translateX(-40%) translateY(0) rotate(10deg); }
+}
+
+.container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
+.header { padding: 1rem 0; }
+.nav { display:flex; justify-content:space-between; align-items:center; padding: 0.5rem 0; }
+.nav a { margin-left: 1rem; text-decoration:none; color:#111; font-weight:600; }
+.hero { padding: 2rem 0; }
+/* Slight glass effect for cards to stand above the decorative background */
+.card {
+	background: rgba(255,255,255,0.85);
+	padding:1rem;
+	border-radius:10px;
+	box-shadow: 0 6px 18px rgba(16,24,40,0.08);
+	margin-bottom:1rem;
+	border: 1px solid rgba(16,24,40,0.04);
+	-webkit-backdrop-filter: blur(6px);
+	backdrop-filter: blur(6px);
+}
+.footer { text-align:center; padding:1rem 0; color:#666; margin-top:2rem; }
